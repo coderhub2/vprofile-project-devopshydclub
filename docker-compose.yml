@@ -4,29 +4,29 @@ services:
     build: ./Docker-files/db
     image: coderhub1/vprofiledb
     container_name: vprodb
-    ports: 
+    ports:
       - "3306:3306"
-    volumes: 
+    volumes:
       - vprodbdata:/var/lib/mysql
 
   vprocache01:
     image: memcached
-    ports: 
+    ports:
       - "11211:11211"
 
   vpromq01:
     image: rabbitmq
-    ports: 
+    ports:
       - "15672:15672"
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
-  
+
   vproapp:
     build: ./Docker-files/app
     image: coderhub1/vprofileapp
     container_name: vproapp
-    ports: 
+    ports:
       - "8080:8080"
     volumes:
       - vproappdata:/usr/local/tomcat/webapps
@@ -35,25 +35,9 @@ services:
     build: ./Docker-files/web
     image: coderhub1/vprofileweb
     container_name: vproweb
-    ports: 
+    ports:
       - "80:80"
 
 volumes:
   vprodbdata: {}
   vproappdata: {}
-    
-    
-
-  
-  
-
-
-  
-
-
-    
-
-
-
-    
-    
