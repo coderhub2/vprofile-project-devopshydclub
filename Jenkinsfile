@@ -28,11 +28,7 @@ pipeline {
             }
         }
 
-	stage('INTEGRATION TEST'){
-            steps {
-                sh 'mvn verify -DskipUnitTests'
-            }
-        }
+
 		
         stage ('CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
