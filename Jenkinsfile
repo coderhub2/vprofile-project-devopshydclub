@@ -74,9 +74,13 @@ pipeline {
         }
 
         stage('build app image'){
-            script{
-                dockkerImage = docker.build registry + ":$BUILD_NUMBER"
+            steps{
+                script{
+                  dockkerImage = docker.build registry + ":$BUILD_NUMBER"
             }
+
+            }
+            
         }
 
         stage('upload image to docker'){
